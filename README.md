@@ -20,9 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
+    require 'typable_map'
+
     max_size = 4
     shuffle = true
-    typable_map = TypableMap.new(max_size, shuffle)
+    typable_map = TypableMap::TypableMap.new(max_size, shuffle)
 
     # assign a uniq string to an object
 
