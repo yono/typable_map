@@ -5,22 +5,64 @@ require 'spec_helper'
 
 describe TypableMap do
   before do
-    max_length = 4
-    shuffle = true
-    @typablemap = TypableMap::TypableMap.new(max_length, shuffle)
+    @typable_map = TypableMap::TypableMap.new(max_size: 4, shuffle: true)
+  end
+
+  describe 'when use default args' do
+    it 'should initialize' do
+      typable_map = TypableMap::TypableMap.new
+      uniq_str = typable_map.push(Object.new)
+      uniq_str.wont_be_nil
+    end
+
+    it 'should generate string "a" first' do
+      typable_map = TypableMap::TypableMap.new
+      uniq_str = typable_map.push(Object.new)
+      uniq_str.must_equal "a"
+    end
+  end
+
+  describe 'when use max_size args' do
+    it 'should initialize' do
+      typable_map = TypableMap::TypableMap.new(size: 8)
+      uniq_str = typable_map.push(Object.new)
+      uniq_str.wont_be_nil
+    end
+
+    it 'should generate string "a" first' do
+      typable_map = TypableMap::TypableMap.new
+      uniq_str = typable_map.push(Object.new)
+      uniq_str.must_equal "a"
+    end
+
+    it 'should be less than args max_length' do
+      1000.times do 
+        inserted_obj = Object.new
+        uniq_str = @typable_map.push(inserted_obj)
+        uniq_str.length.must_be :<=, 8
+      end
+    end
+  end
+
+  describe 'when use shuffle args' do
+    it 'should initialize' do
+      typable_map = TypableMap::TypableMap.new(shuflle: true)
+      uniq_str = typable_map.push(Object.new)
+      uniq_str.wont_be_nil
+    end
   end
 
   describe 'when push object' do
     it 'should generate uniq string' do
       inserted_obj = Object.new
-      uniq_str = @typablemap.push(inserted_obj)
+      uniq_str = @typable_map.push(inserted_obj)
       uniq_str.wont_equal "aaaa"
     end
 
     it 'should be less than args max_length' do
       1000.times do 
         inserted_obj = Object.new
-        uniq_str = @typablemap.push(inserted_obj)
+        uniq_str = @typable_map.push(inserted_obj)
         uniq_str.length.must_be :<=, 4
       end
     end
@@ -28,8 +70,8 @@ describe TypableMap do
     it 'should generate other uniq string' do
       1000.times do 
         inserted_obj = Object.new
-        uniq_str = @typablemap.push(inserted_obj)
-        other_str = @typablemap.push(inserted_obj)
+        uniq_str = @typable_map.push(inserted_obj)
+        other_str = @typable_map.push(inserted_obj)
         other_str.wont_equal uniq_str
       end
     end
@@ -38,9 +80,9 @@ describe TypableMap do
   describe 'when pull object' do
     it 'should retern the object' do
       inserted_obj = Object.new
-      uniq_str = @typablemap.push(inserted_obj)
+      uniq_str = @typable_map.push(inserted_obj)
 
-      fetched_obj = @typablemap[uniq_str]
+      fetched_obj = @typable_map[uniq_str]
       fetched_obj.must_equal inserted_obj
     end
   end

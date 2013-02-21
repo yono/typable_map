@@ -14,7 +14,9 @@ ga gi gu ge go za ji zu ze zo da de do
 ba bi bu be bo pa pi pu pe po
     ].freeze
 
-    def initialize(size = nil, shuffle = false)
+    def initialize(opts = {})
+      size = opts.fetch(:size, nil)
+      shuffle = opts.fetch(:shuffle, nil)
       if shuffle
         @seq = Roman.dup
         if @seq.respond_to?(:shuffle!)

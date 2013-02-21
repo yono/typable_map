@@ -22,9 +22,7 @@ Or install it yourself as:
 
     require 'typable_map'
 
-    max_size = 4
-    shuffle = true
-    typable_map = TypableMap::TypableMap.new(max_size, shuffle)
+    typable_map = TypableMap::TypableMap.new(max_size: 4, shuffle: true)
 
     # assign a uniq string to an object
 
