@@ -20,23 +20,25 @@ Or install it yourself as:
 
 ## Usage
 
-    @typablemap = TypableMap.new
+    max_size = 4
+    shuffle = true
+    typable_map = TypableMap.new(max_size, shuffle)
 
     # assign a uniq string to an object
 
     obj1 = Object.new
-    uniq_string1 = @typablemap.push(obj1)
+    uniq_string1 = typable_map.push(obj1)
     puts uniq_string1 # => 'vowi'
 
     obj2 = Object.new
-    uniq_string2 = @typablemap.push(obj2)
+    uniq_string2 = typable_map.push(obj2)
     puts uniq_string2 # => 'lizo'
 
     # fetch an object
 
-    obj1 = @typablemap[uniq_string1]
+    obj1 = typable_map[uniq_string1]
 
-    obj2 = @typablemap[uniq_string2]
+    obj2 = typable_map[uniq_string2]
 
 ## Contributing
 
