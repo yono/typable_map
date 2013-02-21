@@ -5,7 +5,7 @@ require 'spec_helper'
 
 describe TypableMap do
   before do
-    @typable_map = TypableMap::TypableMap.new(max_size: 4, shuffle: true)
+    @typable_map = TypableMap::TypableMap.new(max_size: 1000, shuffle: true)
   end
 
   describe 'when use default args' do
@@ -24,7 +24,7 @@ describe TypableMap do
 
   describe 'when use max_size args' do
     it 'should initialize' do
-      typable_map = TypableMap::TypableMap.new(size: 8)
+      typable_map = TypableMap::TypableMap.new(max_size: 1000)
       uniq_str = typable_map.push(Object.new)
       uniq_str.wont_be_nil
     end
@@ -33,14 +33,6 @@ describe TypableMap do
       typable_map = TypableMap::TypableMap.new
       uniq_str = typable_map.push(Object.new)
       uniq_str.must_equal "a"
-    end
-
-    it 'should be less than args max_length' do
-      1000.times do 
-        inserted_obj = Object.new
-        uniq_str = @typable_map.push(inserted_obj)
-        uniq_str.length.must_be :<=, 8
-      end
     end
   end
 
@@ -57,23 +49,6 @@ describe TypableMap do
       inserted_obj = Object.new
       uniq_str = @typable_map.push(inserted_obj)
       uniq_str.wont_equal "aaaa"
-    end
-
-    it 'should be less than args max_length' do
-      1000.times do 
-        inserted_obj = Object.new
-        uniq_str = @typable_map.push(inserted_obj)
-        uniq_str.length.must_be :<=, 4
-      end
-    end
-
-    it 'should generate other uniq string' do
-      1000.times do 
-        inserted_obj = Object.new
-        uniq_str = @typable_map.push(inserted_obj)
-        other_str = @typable_map.push(inserted_obj)
-        other_str.wont_equal uniq_str
-      end
     end
   end
 

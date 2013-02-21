@@ -15,7 +15,7 @@ ba bi bu be bo pa pi pu pe po
     ].freeze
 
     def initialize(opts = {})
-      size = opts.fetch(:size, nil)
+      size = opts.fetch(:max_size, nil)
       shuffle = opts.fetch(:shuffle, nil)
       if shuffle
         @seq = Roman.dup
