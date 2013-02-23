@@ -38,7 +38,7 @@ describe TypableMap do
 
   describe 'when use shuffle args' do
     it 'should initialize' do
-      typable_map = TypableMap::TypableMap.new(shuflle: true)
+      typable_map = TypableMap::TypableMap.new(shuffle: true)
       uniq_str = typable_map.push(Object.new)
       uniq_str.wont_be_nil
     end
@@ -59,6 +59,18 @@ describe TypableMap do
 
       fetched_obj = @typable_map[uniq_str]
       fetched_obj.must_equal inserted_obj
+    end
+  end
+
+  describe 'when push a object many times' do
+    it 'should generate uniq strings' do
+      before_str = ''
+      1000.times do
+        inserted_obj = Object.new
+        uniq_str = @typable_map.push(inserted_obj)
+        uniq_str.wont_equal before_str
+        before_str = uniq_str
+      end
     end
   end
 end
