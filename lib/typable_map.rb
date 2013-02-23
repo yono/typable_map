@@ -2,6 +2,7 @@
 # https://github.com/shunirr/FacebookIrcGateway/blob/master/lib/facebook_irc_gateway/typable_map.rb
 
 require "typable_map/version"
+require "typable_map/counter"
 
 module TypableMap
   class TypableMap < Hash
@@ -16,18 +17,14 @@ ba bi bu be bo pa pi pu pe po
 
     def initialize(opts = {})
       @seq = Roman.dup
-      @max_size = opts.fetch(:max_size, @seq.size)
-      shuffle = opts.fetch(:shuffle, nil)
-      @seq.shuffle! if shuffle
+      @seq.shuffle! if opts.fetch(:shuffle, nil)
       @seq.freeze
-      @n = 0
+      @counter = Counter.new(opts.fetch(:max_size, @seq.size))
     end
 
     def push(obj)
-      id = generate(@n)
+      id = generate(@counter.next)
       self[id] = obj
-      @n += 1
-      @n %= @max_size
       id
     end
     alias :<< :push
@@ -42,7 +39,7 @@ ba bi bu be bo pa pi pu pe po
       end while n > 0
       ret.reverse.join
     end
-    
+
     :[]=
     
   end

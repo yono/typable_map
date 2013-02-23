@@ -10,3 +10,4 @@ require 'minitest/unit'
 require 'minitest/autorun'
 
 require 'typable_map'
+require 'typable_map/counter'
