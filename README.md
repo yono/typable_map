@@ -1,4 +1,4 @@
-# TypableMap
+# TypableMap [![Code Climate](https://codeclimate.com/github/yono/typable_map.png)](https://codeclimate.com/github/yono/typable_map)
 
 TypableMap assigns a uniq string to an object and fetches the object by the string.
 
