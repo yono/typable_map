@@ -10,7 +10,8 @@ Gem::Specification.new do |gem|
   gem.email         = ["yono.05@gmail.com"]
   gem.description   = %q{TypableMap library inspired by TweetIrcGateway and FacebookIrcGateway}
   gem.summary       = %q{TypableMap library inspired by TweetIrcGateway and FacebookIrcGateway}
-  gem.homepage      = ""
+  gem.homepage      = "http://yono.cc/typable_map"
+  gem.required_ruby_version = '>=1.9.3'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
