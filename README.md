@@ -40,6 +40,12 @@ Or install it yourself as:
 
     obj2 = typable_map[uniq_string2]
 
+## Development
+
+    $ bundle install --path vendor/bundle
+    ... add tests and add features.
+    $ bundle exec rake test
+
 ## Contributing
 
 1. Fork it
