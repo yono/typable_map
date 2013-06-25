@@ -1,4 +1,9 @@
-# TypableMap [![Code Climate](https://codeclimate.com/github/yono/typable_map.png)](https://codeclimate.com/github/yono/typable_map) [![gemnasium](https://gemnasium.com/yono/typable_map.png)](https://gemnasium.com/yono/typable_map.png) [![Build Status](https://travis-ci.org/yono/typable_map.png?branch=master)](https://travis-ci.org/yono/typable_map)
+# TypableMap 
+
+[![Code Climate](https://codeclimate.com/github/yono/typable_map.png)](https://codeclimate.com/github/yono/typable_map) 
+[![gemnasium](https://gemnasium.com/yono/typable_map.png)](https://gemnasium.com/yono/typable_map.png) 
+[![Build Status](https://travis-ci.org/yono/typable_map.png?branch=master)](https://travis-ci.org/yono/typable_map)
+[![Coverage Status](https://coveralls.io/repos/yono/typable_map/badge.png)](https://coveralls.io/r/yono/typable_map)
 
 TypableMap assigns a uniq string to an object and fetches the object by the string.
 
